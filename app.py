@@ -42,7 +42,7 @@ if uploaded_files:
         )
 
         vectorstore = FAISS.from_documents(docs, embedding)
-        st.success("✅ PDFs processed and indexed successfully!")
+        st.success("✅ PDFs processed successfully!")
 
         llm = ChatGroq(api_key=os.getenv("GROQ_API_KEY"), model_name="llama3-70b-8192")
 
@@ -72,7 +72,7 @@ if uploaded_files:
 
                     if sources:
                         st.markdown("---")
-                        st.markdown("### 📄 Top Relevant Passages")
+                        st.markdown("### 📄 Related Passages")
                         for i, doc in enumerate(sources[:5]):
                             page_number = doc.metadata.get("page")
                             page_number = page_number + 1 if page_number is not None else "N/A"
